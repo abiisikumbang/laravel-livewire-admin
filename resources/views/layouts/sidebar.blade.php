@@ -14,7 +14,7 @@
                 data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link">
+                    <a href="{{ route('dashboard') }}" class="nav-link @yield('menuDashboard')">
                         <i class="nav-icon fas fa-home"></i>
                         Dashboard
                         </p>
@@ -50,7 +50,7 @@
 
                 <li class="nav-header">ADMIN</li>
                 <li class="nav-item">
-                    <a wire:navigate    href="#" class="nav-link">
+                    <a wire:navigate href="{{ route('admin.barang') }}" class="nav-link @yield('menuAdminBarang')">
                         <i class="nav-icon fas fa-box"></i>
                         <p>
                             Data Barang

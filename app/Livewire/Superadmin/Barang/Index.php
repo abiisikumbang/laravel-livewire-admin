@@ -109,6 +109,7 @@ class Index extends Component
     public function confirm($id){
         $barang = Barang::findOrFail($id);
         $this->nama_barang = $barang->nama_barang;
+        $this->stok = $barang->stok;
         $this->barang_id = $barang->id;
     }
 

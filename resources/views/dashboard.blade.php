@@ -2,7 +2,7 @@
 
 @section('title', 'Data User')
 
-@section('menuSuperadminUser', 'active')
+@section('menuDashboard', 'active')
 
 @section('content')
     @livewire('dashboard')

@@ -23,6 +23,7 @@
                             <td class="text-bold"><span>: </span>{{ $stok }}</td>
                         </tr>
 
+
                     </table>
                 </div>
             </div>

@@ -8,7 +8,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item "><a href="#"><i
+                            <li class="breadcrumb-item "><a wire:navigate href="{{ route('dashboard') }}"><i
                                         class="fas fa fa-home mr-1"></i>Dashboard</a></li>
                             <li class="breadcrumb-item active"><i class="fas fa fa-box mr-1"></i>{{ $title }}
                             </li>

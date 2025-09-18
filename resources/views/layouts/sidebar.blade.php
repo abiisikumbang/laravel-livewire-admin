@@ -14,7 +14,7 @@
                 data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link @yield('menuDashboard')">
+                    <a wire:navigate href="{{ route('dashboard') }}" class="nav-link @yield('menuDashboard')">
                         <i class="nav-icon fas fa-home"></i>
                         Dashboard
                         </p>

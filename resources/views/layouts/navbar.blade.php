@@ -28,9 +28,7 @@
                         </p>
                     </li>
                     <li class="user-footer">
-                        <a href="#" class="btn btn-danger d-block mx-auto">
-                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
-                        </a>
+                        @livewire('logout-button')
                     </li>
                 </ul>
             </li>

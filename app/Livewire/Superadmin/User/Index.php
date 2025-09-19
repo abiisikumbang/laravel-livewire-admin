@@ -41,7 +41,7 @@ class Index extends Component
             });
         }
         $data = [
-            'user' => $query->orderBy('role', 'asc')->simplePaginate(5)
+            'user' => $query->orderBy('role', 'asc')->simplePaginate(10)
         ];
 
         return view('livewire.superadmin.user.index', $data);

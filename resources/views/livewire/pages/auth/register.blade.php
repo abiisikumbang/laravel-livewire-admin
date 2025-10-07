@@ -41,14 +41,14 @@ new #[Layout('layouts.guest')] class extends Component
         <!-- Nama -->
         <div>
             <x-input-label for="name" :value="__('Nama')" />
-            <x-text-input wire:model="nama" id="name" class="block mt-1 w-full" type="text" name="name" required autofocus autocomplete="name" />
+            <x-text-input wire:model="nama" id="name" class="block mt-1 w-full" type="text" name="name" required autofocus autocomplete="name" placeholder="Masukan Nama" />
             <x-input-error :messages="$errors->get('nama')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autocomplete="username" />
+            <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autocomplete="username" placeholder="Masukan Email" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
@@ -59,7 +59,7 @@ new #[Layout('layouts.guest')] class extends Component
             <x-text-input wire:model="password" id="password" class="block mt-1 w-full"
                             type="password"
                             name="password"
-                            required autocomplete="new-password" />
+                            required autocomplete="new-password" placeholder="Masukan Password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -70,13 +70,13 @@ new #[Layout('layouts.guest')] class extends Component
 
             <x-text-input wire:model="password_confirmation" id="password_confirmation" class="block mt-1 w-full"
                             type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+                            name="password_confirmation" required autocomplete="new-password" placeholder="Masukan Password Konfirmasi" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}" wire:navigate>
+            <a class="underline text-sm text-[#d5d5d5] hover:text-[#4d4d4d] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fff]" href="{{ route('login') }}" wire:navigate>
                 {{ __('Sudah terdaftar?') }}
             </a>
 

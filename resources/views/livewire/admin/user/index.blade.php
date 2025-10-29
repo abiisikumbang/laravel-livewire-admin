@@ -110,7 +110,7 @@
                         </div>
                     </div>
                 </div>
-                @include('livewire.superadmin.user.modal.create')
+                @include('livewire.admin.user.modal.create')
                 @script
                     <script>
                         $wire.on('closeCreateModal', () => {
@@ -123,7 +123,7 @@
                         });
                     </script>
                 @endscript
-                @include('livewire.superadmin.user.modal.edit')
+                @include('livewire.admin.user.modal.edit')
                 @script
                     <script>
                         $wire.on('closeUpdateModal', () => {
@@ -136,7 +136,7 @@
                         });
                     </script>
                 @endscript
-                @include('livewire.superadmin.user.modal.delete')
+                @include('livewire.admin.user.modal.delete')
                 @script
                     <script>
                         $wire.on('closeDeleteModal', () => {

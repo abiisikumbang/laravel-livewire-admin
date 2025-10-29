@@ -25,7 +25,7 @@
                     </div>
                     <p>
                         <span
-                            class="badge {{ Auth::user()->role == 'Super Admin' ? 'badge-success' : 'badge-primary' }} px-3 py-1 mt-1 shadow-sm">
+                            class="badge {{ Auth::user()->role == 'superadmin' ? 'badge-success' : 'badge-primary' }} px-3 py-1 mt-1 shadow-sm">
                             {{ Auth::user()->role }}
                         </span>
                     </p>

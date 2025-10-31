@@ -49,7 +49,7 @@ class Index extends Component
 
   public function create()
   {
-
+    $this->authorize('create', User::class);
     $this->resetValidation();
     $this->reset(['nama', 'email', 'role', 'password', 'password_confirmation']);
   }
@@ -90,6 +90,7 @@ class Index extends Component
 
   public function edit($id)
   {
+    $this->authorize('update', User::class);
     $this->resetValidation();
 
     $user = User::findOrFail($id);
@@ -138,6 +139,7 @@ class Index extends Component
 
   public function confirm($id)
   {
+    $this->authorize('delete', User::class);
     $user = User::findOrFail($id);
     $this->nama = $user->nama;
     $this->email = $user->email;

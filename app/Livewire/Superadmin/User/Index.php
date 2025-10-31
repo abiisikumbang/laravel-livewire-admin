@@ -47,33 +47,37 @@ class Index extends Component
         return view('livewire.superadmin.user.index', $data);
     }
 
-    public function create(){
+    public function create()
+    {
 
-        $this-> resetValidation();
-        $this-> reset(['nama', 'email', 'role', 'password', 'password_confirmation']);
+        $this->authorize('create', User::class);
+        $this->resetValidation();
+        $this->reset(['nama', 'email', 'role', 'password', 'password_confirmation']);
     }
 
 
 
     public function store()
     {
-        $this->validate([
+        $this->validate(
+            [
 
-            'nama' => 'required ',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8|confirmed',
-            'role' => 'required',
-        ],
-    [
-        'nama.required' => 'Nama harus diisi',
-        'email.required' => 'Email harus diisi',
-        'email.email' => 'Email tidak valid',
-        'email.unique' => 'Email sudah terdaftar',
-        'password.required' => 'Password harus diisi',
-        'password.min' => 'Password minimal 8 karakter',
-        'password.confirmed' => 'Password tidak sama',
-        'role.required' => 'Role harus diisi',
-    ]);
+                'nama' => 'required ',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required|min:8|confirmed',
+                'role' => 'required',
+            ],
+            [
+                'nama.required' => 'Nama harus diisi',
+                'email.required' => 'Email harus diisi',
+                'email.email' => 'Email tidak valid',
+                'email.unique' => 'Email sudah terdaftar',
+                'password.required' => 'Password harus diisi',
+                'password.min' => 'Password minimal 8 karakter',
+                'password.confirmed' => 'Password tidak sama',
+                'role.required' => 'Role harus diisi',
+            ]
+        );
 
         $user = new User;
         $user->nama = $this->nama;
@@ -83,11 +87,12 @@ class Index extends Component
         $user->save();
 
         $this->dispatch('closeCreateModal');
-
     }
 
-    public function edit($id){
-        $this-> resetValidation();
+    public function edit($id)
+    {
+        $this->authorize('update', User::class);
+        $this->resetValidation();
 
         $user = User::findOrFail($id);
         $this->nama = $user->nama;
@@ -98,26 +103,29 @@ class Index extends Component
         $this->user_id = $user->id;
     }
 
-    public function update($id){
+    public function update($id)
+    {
 
         $user = User::findOrFail($id);
 
-        $this->validate([
-            'nama' => ['required'],
-            'email' => ['required', 'email', 'unique:users,email,' . $user->id],
-            'role' => ['required'],
-            'password' => ['nullable', 'min:8', 'confirmed'],
-            'password_confirmation' => ['nullable'],
-        ],
-        [
-            'nama.required' => 'Nama harus diisi.',
-            'email.required' => 'Email harus diisi.',
-            'email.email' => 'Email tidak valid.',
-            'email.unique' => 'Email sudah terdaftar.',
-            'password.min' => 'Password minimal 8 karakter.',
-            'password.confirmed' => 'Password tidak sesuai.',
-            'role.required' => 'Role harus diisi.',
-        ]);
+        $this->validate(
+            [
+                'nama' => ['required'],
+                'email' => ['required', 'email', 'unique:users,email,' . $user->id],
+                'role' => ['required'],
+                'password' => ['nullable', 'min:8', 'confirmed'],
+                'password_confirmation' => ['nullable'],
+            ],
+            [
+                'nama.required' => 'Nama harus diisi.',
+                'email.required' => 'Email harus diisi.',
+                'email.email' => 'Email tidak valid.',
+                'email.unique' => 'Email sudah terdaftar.',
+                'password.min' => 'Password minimal 8 karakter.',
+                'password.confirmed' => 'Password tidak sesuai.',
+                'role.required' => 'Role harus diisi.',
+            ]
+        );
 
         $user->nama = $this->nama;
         $user->email = $this->email;
@@ -130,7 +138,9 @@ class Index extends Component
         $this->dispatch('closeUpdateModal');
     }
 
-    public function confirm($id){
+    public function confirm($id)
+    {
+        $this->authorize('delete', User::class);
         $user = User::findOrFail($id);
         $this->nama = $user->nama;
         $this->email = $user->email;
@@ -138,7 +148,8 @@ class Index extends Component
         $this->user_id = $user->id;
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         $user = User::findOrFail($id);
         $user->delete();
         $this->dispatch('closeDeleteModal');

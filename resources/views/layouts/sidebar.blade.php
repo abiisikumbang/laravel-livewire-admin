@@ -7,130 +7,69 @@
     </a>
 
     <!-- Sidebar -->
-    {{-- <div class="sidebar">
+    <div class="sidebar">
+        
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
+                {{-- Menu umum untuk semua role --}}
                 <li class="nav-item">
                     <a wire:navigate href="{{ route('dashboard') }}" class="nav-link @yield('menuDashboard')">
                         <i class="nav-icon fas fa-home"></i>
-                        Dashboard
-                        </p>
+                        <p>Dashboard</p>
                     </a>
                 </li>
 
-                <li class="nav-header">SUPER ADMIN</li>
+                {{-- Menu khusus Superadmin --}}
+                @if(Auth::check() && Auth::user()->role === 'superadmin')
+                    <li class="nav-header">SUPER ADMIN</li>
 
-                <li class="nav-item">
-                    <a wire:navigate href="{{ route('superadmin.user') }}" class="nav-link @yield('menuSuperadminUser')">
-                        <i class="nav-icon far fa-user-circle"></i>
-                        <p>
-                            Data User
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a wire:navigate href="{{ route('superadmin.kategori') }}" class="nav-link @yield('menuSuperadminKategori')">
-                        <i class="nav-icon fas fa-tags"></i>
-                        <p>
-                            Data Kategori
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a wire:navigate href="{{ route('superadmin.barang') }}" class="nav-link @yield('menuSuperadminBarang')">
-                        <i class="nav-icon fas fa-box"></i>
-                        <p>
-                            Data Barang
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a wire:navigate href="{{ route('superadmin.user') }}" class="nav-link @yield('menuSuperadminUser')">
+                            <i class="nav-icon far fa-user-circle"></i>
+                            <p>Data User</p>
+                        </a>
+                    </li>
 
-                <li class="nav-header">ADMIN</li>
-                <li class="nav-item">
-                    <a wire:navigate href="{{ route('admin.barang') }}" class="nav-link @yield('menuAdminBarang')">
-                        <i class="nav-icon fas fa-box"></i>
-                        <p>
-                            Data Barang
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a wire:navigate href="{{ route('admin.user') }}" class="nav-link @yield('menuAdminUser')">
-                        <i class="nav-icon far fa-user-circle"></i>
-                        <p>
-                            Data User
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a wire:navigate href="{{ route('superadmin.kategori') }}" class="nav-link @yield('menuSuperadminKategori')">
+                            <i class="nav-icon fas fa-tags"></i>
+                            <p>Data Kategori</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a wire:navigate href="{{ route('superadmin.barang') }}" class="nav-link @yield('menuSuperadminBarang')">
+                            <i class="nav-icon fas fa-box"></i>
+                            <p>Data Barang</p>
+                        </a>
+                    </li>
+                @endif
+
+                {{-- Menu khusus Admin --}}
+                @if(Auth::check() && Auth::user()->role === 'admin')
+                    <li class="nav-header">ADMIN</li>
+
+                    <li class="nav-item">
+                        <a wire:navigate href="{{ route('admin.barang') }}" class="nav-link @yield('menuAdminBarang')">
+                            <i class="nav-icon fas fa-box"></i>
+                            <p>Data Barang</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a wire:navigate href="{{ route('admin.user') }}" class="nav-link @yield('menuAdminUser')">
+                            <i class="nav-icon far fa-user-circle"></i>
+                            <p>Data User</p>
+                        </a>
+                    </li>
+                @endif
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
-    </div> --}}
-    <!-- Sidebar -->
-<div class="sidebar">
-    <!-- Sidebar Menu -->
-    <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-            {{-- Menu umum untuk semua role --}}
-            <li class="nav-item">
-                <a wire:navigate href="{{ route('dashboard') }}" class="nav-link @yield('menuDashboard')">
-                    <i class="nav-icon fas fa-home"></i>
-                    <p>Dashboard</p>
-                </a>
-            </li>
-
-            {{-- Menu khusus Superadmin --}}
-            @if(Auth::check() && Auth::user()->role === 'superadmin')
-                <li class="nav-header">SUPER ADMIN</li>
-
-                <li class="nav-item">
-                    <a wire:navigate href="{{ route('superadmin.user') }}" class="nav-link @yield('menuSuperadminUser')">
-                        <i class="nav-icon far fa-user-circle"></i>
-                        <p>Data User</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a wire:navigate href="{{ route('superadmin.kategori') }}" class="nav-link @yield('menuSuperadminKategori')">
-                        <i class="nav-icon fas fa-tags"></i>
-                        <p>Data Kategori</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a wire:navigate href="{{ route('superadmin.barang') }}" class="nav-link @yield('menuSuperadminBarang')">
-                        <i class="nav-icon fas fa-box"></i>
-                        <p>Data Barang</p>
-                    </a>
-                </li>
-            @endif
-
-            {{-- Menu khusus Admin --}}
-            @if(Auth::check() && Auth::user()->role === 'admin')
-                <li class="nav-header">ADMIN</li>
-
-                <li class="nav-item">
-                    <a wire:navigate href="{{ route('admin.barang') }}" class="nav-link @yield('menuAdminBarang')">
-                        <i class="nav-icon fas fa-box"></i>
-                        <p>Data Barang</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a wire:navigate href="{{ route('admin.user') }}" class="nav-link @yield('menuAdminUser')">
-                        <i class="nav-icon far fa-user-circle"></i>
-                        <p>Data User</p>
-                    </a>
-                </li>
-            @endif
-
-        </ul>
-    </nav>
-    <!-- /.sidebar-menu -->
-</div>
-<!-- /.sidebar -->
+        
+    </div>
+    <!-- /.sidebar -->
 </aside>

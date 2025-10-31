@@ -13,14 +13,14 @@ class RoleMiddleware
         $user = Auth::user();
 
         if (!$user) {
-            abort(403, 'Unauthorized access - user not logged in');
+            abort(403, 'Akses tidak sah - pengguna tidak login');
         }
 
         $userRole = strtolower($user->role);
         $roles = array_map('strtolower', $roles);
 
         if (!in_array($userRole, $roles)) {
-            abort(403, 'Unauthorized access - role mismatch');
+            abort(403, 'Akses tidak sah - pengguna tidak memiliki hak akses yang sesuai');
         }
 
         return $next($request);

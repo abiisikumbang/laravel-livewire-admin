@@ -25,8 +25,10 @@
                 <div class="d-flex align-items-center mb-3 ml-4 mt-3 mr-4">
                     <div class="section-header-button">
                         <div class="card-body">
+                            @can('create', App\Models\User::class)
                             <button wire:click="create" type="button" class="btn btn-primary" data-toggle="modal"
                                 data-target="#tambah-user"><i class="fas fa-plus mr-1"></i>Tambah Data</button>
+                            @endcan
                         </div>
                     </div>
                     <div class="ml-auto btn-group dropleft">
@@ -88,14 +90,23 @@
                                                 class="badge {{ $item->role == 'superadmin' ? 'badge-success' : 'badge-primary' }}">{{ $item->role }}</span>
                                         </td>
                                         <td class="text-center">
+                                            @can('update', App\Models\User::class)
                                             <button wire:click="edit({{ $item->id }})" type="button"
                                                 class="btn btn-warning" data-toggle="modal" data-target="#edit-user"><i
                                                     class="fas fa-edit"></i></button>
-
-
+                                                @else
+                                                <button class="btn btn-warning" disabled><i
+                                                class="fas fa-edit"></i></button>
+                                                @endcan
+                                            
+                                            @can( 'delete', App\Models\User::class)
                                             <button wire:click="confirm( {{ $item->id }})" type="button"
                                                 class="btn btn-danger" data-toggle="modal" data-target="#hapus-user"><i
-                                                    class="fas fa-trash"></i></button>
+                                                class="fas fa-trash"></i></button>
+                                                @else
+                                                <button class="btn btn-danger" disabled><i
+                                                class="fas fa-trash"></i></button>
+                                                @endcan
                                         </td>
                                     </tr>
                                 @empty

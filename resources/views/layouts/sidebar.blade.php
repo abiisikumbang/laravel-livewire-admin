@@ -50,7 +50,13 @@
                 {{-- Menu khusus Admin --}}
                 @if(Auth::check() && Auth::user()->role === 'admin')
                     <li class="nav-header">ADMIN</li>
-
+                    
+                    <li class="nav-item">
+                        <a wire:navigate href="{{ route('admin.user') }}" class="nav-link @yield('menuAdminUser')">
+                            <i class="nav-icon far fa-user-circle"></i>
+                            <p>Data User</p>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a wire:navigate href="{{ route('admin.barang') }}" class="nav-link @yield('menuAdminBarang')">
                             <i class="nav-icon fas fa-box"></i>
@@ -58,12 +64,6 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a wire:navigate href="{{ route('admin.user') }}" class="nav-link @yield('menuAdminUser')">
-                            <i class="nav-icon far fa-user-circle"></i>
-                            <p>Data User</p>
-                        </a>
-                    </li>
                 @endif
 
             </ul>

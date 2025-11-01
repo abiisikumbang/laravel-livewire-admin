@@ -17,7 +17,9 @@
 
         @include('layouts.navbar')
 
+        @if (!Route::is('profile'))
         @include('layouts.sidebar')
+        @endif
 
         @yield('content')
 

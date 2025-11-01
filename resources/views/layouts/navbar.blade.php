@@ -1,7 +1,13 @@
 <nav class="main-header navbar navbar-expand navbar-white navbar-light shadow-sm">
-    <a class="nav-link" data-widget="pushmenu" href="#" role="button">
-        <i class="fas fa-bars"></i>
-    </a>
+    @if (request()->routeIs('profile'))
+        <a class="nav-link d-none" data-widget="pushmenu" href="#" role="button">
+            <i class="fas fa-bars"></i>
+        </a>
+    @else
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+            <i class="fas fa-bars"></i>
+        </a>
+    @endif
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
         </li>
